@@ -1,5 +1,3 @@
-import React from "react";
-
 export const SvgIcon = () => {
   return (
     <div>
