@@ -23,7 +23,7 @@ export const Section = styled.section`
   padding: 0.5rem;
 `;
 
-export const FirstTitlle = styled.h1`
+export const FirstTitle = styled.h1`
   color: rgb(95, 95, 255);
   font-weight: 700;
   font-size: 4rem;

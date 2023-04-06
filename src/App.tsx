@@ -1,6 +1,6 @@
 import {
   Button,
-  FirstTitlle,
+  FirstTitle,
   Footer,
   GlobalStyle,
   Header,
@@ -20,7 +20,7 @@ const App = () => {
           <SvgIcon />
         </Header>
 
-        <FirstTitlle>Engineering Test</FirstTitlle>
+        <FirstTitle>Engineering Test</FirstTitle>
         <Typographies>
           <p>CodeLeap coding test</p>
           <p>Working on designs:</p>
