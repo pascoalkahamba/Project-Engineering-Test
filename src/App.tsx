@@ -7,7 +7,7 @@ import {
   SecondButton,
   Section,
   Typographies,
-} from "./styles/GlobalStyle";
+} from "./styles/GlobalStyles";
 import { SvgIcon, IconQuestion } from "./svgIcon";
 
 const App = () => {
