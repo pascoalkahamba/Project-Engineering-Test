@@ -31,6 +31,7 @@ body {
 
 export const Section = styled.section`
   width: 40rem;
+  margin-top: 2rem;
   height: 26rem;
   padding: 0.5rem;
 `;
