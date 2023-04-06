@@ -6,20 +6,32 @@ export const GlobalStyle = createGlobalStyle`
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
-  display: grid;
-font-family: 'Work Sans', sans-serif;
+  font-family: 'Work Sans', sans-serif;
   font-size: 1.3rem;
   color:#fff;
   background: #000
  
 } 
+
+.App{
+   display: flex;
+  justify-content:center;
+  align-items:center;
+}
+
+@media(max-width:40rem) {
+  h1{
+    font-size: 3rem !important;
+    
+  }
+}
 `;
 
 export const Section = styled.section`
   width: 40rem;
   height: 26rem;
-  margin: 2rem auto;
   padding: 0.5rem;
 `;
 

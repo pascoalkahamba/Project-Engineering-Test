@@ -12,7 +12,7 @@ import { SvgIcon, IconQuestion } from "./svgIcon";
 
 const App = () => {
   return (
-    <div>
+    <div className="App">
       <GlobalStyle />
       <Section>
         <Header>
