@@ -13,9 +13,7 @@ font-family: 'Work Sans', sans-serif;
   color:#fff;
   background: #000
  
-}
- 
-  
+} 
 `;
 
 export const Section = styled.section`
