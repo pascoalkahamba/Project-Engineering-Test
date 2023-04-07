@@ -1,35 +1,29 @@
-import {
-  Button,
-  FirstTitle,
-  Footer,
-  GlobalStyle,
-  Header,
-  SecondButton,
-  Section,
-  Typographies,
-} from "./styles/GlobalStyles";
-import { SvgIcon, IconQuestion } from "./svgIcon";
+import { useState } from "react";
+import { Button, GlobalStyle, UserNameField } from "./styles/GlobalStyles";
+
+interface FormProps {
+  firstField: string;
+  titleField: string;
+  contentField: string;
+}
 
 const App = () => {
+  const [form, setForm] = useState<FormProps>({
+    firstField: "",
+    titleField: "",
+    contentField: "",
+  });
   return (
     <div className="App">
       <GlobalStyle />
-      <Section>
-        <Header>
-          <Button>Coding test</Button>
-          <SvgIcon />
-        </Header>
-
-        <FirstTitle>Engineering Test</FirstTitle>
-        <Typographies>
-          <p>CodeLeap coding test</p>
-          <p>Working on designs:</p>
-        </Typographies>
-        <Footer>
-          <IconQuestion />
-          <SecondButton>COMPLETED</SecondButton>
-        </Footer>
-      </Section>
+      <UserNameField>
+        <p>Welcome to CodeLeap network!</p>
+        <div className="username">
+          <p>Please enter your username</p>
+          <input type="text" name="" id="" placeholder="john doe" />
+        </div>
+        <Button>ENTER</Button>
+      </UserNameField>
     </div>
   );
 };

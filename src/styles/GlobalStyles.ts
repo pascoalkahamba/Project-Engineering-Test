@@ -9,9 +9,9 @@ export const GlobalStyle = createGlobalStyle`
 
 body {
   font-family: 'Work Sans', sans-serif;
-  font-size: 1.3rem;
-  color:#fff;
-  background: #000
+  font-size: 1.2rem;
+  color:#000;
+  background: #DDDD
  
 } 
 
@@ -20,73 +20,26 @@ body {
   justify-content:center;
   align-items:center;
 }
-
-@media(max-width:40rem) {
-  h1{
-    font-size: 3rem !important;
-    
-  }
-}
 `;
 
-export const Section = styled.section`
-  width: 40rem;
-  margin-top: 2rem;
-  height: 26rem;
-  padding: 0.5rem;
-`;
-
-export const FirstTitle = styled.h1`
-  color: rgb(95, 95, 255);
-  font-weight: 700;
-  font-size: 4rem;
-  margin: 1rem 0;
+export const UserNameField = styled.div`
+  background-color: #ffff;
+  width: 30rem;
+  margin-top: 10rem;
+  border-radius: 1rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 `;
 
 export const Button = styled.button`
-  background: #535353;
+  background-color: #7695ec;
   color: #fff;
-  border-radius: 10px;
-  padding: 0 1.6rem;
-  font-size: 1rem;
-  font-weight: 500;
+  cursor: pointer;
+  width: 7rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
   border: none;
-  font-family: "Work Sans";
-  font-style: normal;
-  font-weight: 500;
-  line-height: 47px;
-`;
-
-export const Header = styled.header`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-
-export const Typographies = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 5rem;
-  margin: 0.1rem;
-`;
-
-export const Footer = styled.footer`
-  display: flex;
-  justify-content: space-between;
-  margin-top: 1rem;
-  align-items: center;
-`;
-
-export const SecondButton = styled.button`
-  background: rgb(22, 231, 22);
-  color: #000;
-  border-radius: 10px;
-  padding: 0 1.6rem;
-  font-size: 1rem;
-  font-weight: 500;
-  border: none;
-  font-family: "Work Sans";
-  font-style: normal;
-  font-weight: 500;
-  line-height: 47px;
+  align-self: end;
 `;
