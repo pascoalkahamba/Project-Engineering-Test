@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import {
   Form,
   Header,
@@ -8,10 +8,19 @@ import {
   Button,
 } from "../styles/GlobalStyles";
 import { FormProps } from "../App";
+import UserContent from "./UserContent";
 
 interface homeProps {
   form: FormProps;
   setForm: React.Dispatch<React.SetStateAction<FormProps>>;
+}
+
+interface userInformationProps {
+  username: string;
+  minutes: number;
+  title: string;
+  content: string;
+  id: number;
 }
 
 type handleChangeProps =
@@ -23,16 +32,32 @@ type funAddInformationProps =
   | undefined;
 
 const Home = ({ form, setForm }: homeProps) => {
+  const [userInformation, setUserInformation] = useState<
+    userInformationProps[]
+  >([]);
+
   const handleChange: handleChangeProps = ({ target }) => {
     setForm({ ...form, [target.id]: target.value });
   };
 
   const funAddInformation: funAddInformationProps = (event) => {
     event.preventDefault();
+    setUserInformation([
+      ...userInformation,
+      {
+        title: form.titleField,
+        content: form.contentField,
+        username: form.firstField,
+        id: Number(Math.round(Math.random() * 100)),
+        minutes: new Date().getMinutes(),
+      },
+    ]);
+
+    setForm({ firstField: form.firstField, contentField: "", titleField: "" });
   };
 
   return (
-    <Section>
+    <Section className="animeLeft">
       <Header>CodeLeap Network</Header>
       <div className="form">
         <Form onSubmit={funAddInformation}>
@@ -66,6 +91,17 @@ const Home = ({ form, setForm }: homeProps) => {
             Create
           </Button>
         </Form>
+
+        {userInformation.map(({ content, id, title, minutes, username }) => (
+          <UserContent
+            key={id}
+            username={username}
+            title={title}
+            minutes={minutes}
+            content={content}
+            id={id}
+          />
+        ))}
       </div>
     </Section>
   );
