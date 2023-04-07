@@ -15,7 +15,7 @@ interface homeProps {
   setForm: React.Dispatch<React.SetStateAction<FormProps>>;
 }
 
-interface userInformationProps {
+export interface userInformationProps {
   username: string;
   minutes: number;
   title: string;
@@ -56,6 +56,8 @@ const Home = ({ form, setForm }: homeProps) => {
     setForm({ firstField: form.firstField, contentField: "", titleField: "" });
   };
 
+  console.log(userInformation);
+
   return (
     <Section className="animeLeft">
       <Header>CodeLeap Network</Header>
@@ -95,6 +97,7 @@ const Home = ({ form, setForm }: homeProps) => {
         {userInformation.map(({ content, id, title, minutes, username }) => (
           <UserContent
             key={id}
+            setUserInformation={setUserInformation}
             username={username}
             title={title}
             minutes={minutes}
