@@ -9,7 +9,7 @@ export const GlobalStyle = createGlobalStyle`
 
 body {
   font-family: 'Work Sans', sans-serif;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   color:#000;
   background: #DDDD
  
@@ -25,12 +25,16 @@ body {
 export const UserNameField = styled.div`
   background-color: #ffff;
   width: 30rem;
-  margin-top: 10rem;
+  margin-top: 8rem;
   border-radius: 1rem;
   padding: 1rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
+
+  .username {
+    line-height: 2;
+  }
 `;
 
 export const Button = styled.button`
@@ -42,4 +46,18 @@ export const Button = styled.button`
   border-radius: 0.5rem;
   border: none;
   align-self: end;
+
+  &:disabled {
+    background-color: #ddd;
+    pointer-events: none;
+  }
+`;
+
+export const Input = styled.input`
+  width: 100%;
+  padding: 0.6rem;
+  border: 2px solid #dddd;
+  outline: none;
+  border-radius: 0.5rem;
+  background-color: #fff;
 `;
