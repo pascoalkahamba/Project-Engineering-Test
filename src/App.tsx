@@ -7,7 +7,7 @@ import {
 } from "./styles/GlobalStyles";
 import Home from "./components/Home";
 
-interface FormProps {
+export interface FormProps {
   firstField: string;
   titleField: string;
   contentField: string;
@@ -31,7 +31,7 @@ const App = () => {
     <div className="App">
       <GlobalStyle />
       {nextPage ? (
-        <Home />
+        <Home form={form} setForm={setForm} />
       ) : (
         <UserNameField>
           <h3>Welcome to CodeLeap network!</h3>

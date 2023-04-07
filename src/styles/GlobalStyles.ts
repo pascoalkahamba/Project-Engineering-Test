@@ -20,6 +20,10 @@ body {
   justify-content:center;
   align-items:center;
 }
+
+  .username {
+    line-height: 2;
+  }
 `;
 
 export const UserNameField = styled.div`
@@ -31,10 +35,6 @@ export const UserNameField = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-
-  .username {
-    line-height: 2;
-  }
 `;
 
 export const Button = styled.button`
@@ -60,4 +60,41 @@ export const Input = styled.input`
   outline: none;
   border-radius: 0.5rem;
   background-color: #fff;
+`;
+
+export const Section = styled.section`
+  width: 46rem;
+  margin-top: 3rem;
+  background-color: #fff;
+
+  .form {
+    width: 100%;
+    padding: 1rem;
+  }
+`;
+
+export const Header = styled.header`
+  width: 100%;
+  background-color: #7695ec;
+  font-weight: bolder;
+  color: #fff;
+  padding: 1rem;
+`;
+
+export const Form = styled.form`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  border: 2px solid #dddd;
+  border-radius: 1rem;
+  gap: 1rem;
+`;
+
+export const Textarea = styled.textarea`
+  width: 100%;
+  padding: 1rem;
+  outline: none;
+  border: 2px solid #dddd;
+  border-radius: 1rem;
 `;
