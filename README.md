@@ -1,6 +1,6 @@
 # Test CodeLeap
 
-Este `Projeto` foi desenvolvido para uma `entrvista` da empresa `CodeLeap` com o objetivo de alcançar uma vaga como `Front-End React`. Básicamente o `projecto` tem a função de `adicionar` `editar` e `excluir` `itens` numa determinada `lista de informações` é basicamente um `CRUD moderno` com `modal` para eliminar e editar uma `tarefa`, e claro com uma boa esperiência do usuário em navegar no site e campos estão perfeitamentes validados.
+Este `Projeto` foi desenvolvido para uma `entrvista` da empresa `CodeLeap` com o objetivo de alcançar uma vaga como `Front-End React`. Básicamente o `projecto` tem a função de `adicionar` `editar` e `excluir` `itens` de lembrar que apenas o usuário `Pascoal Kahamba` é o `administrador` que pode fazer essas mudanças nas `lista de informações` é basicamente um `CRUD moderno` com `modal` para eliminar e editar uma `tarefa`, e claro com uma boa esperiência do usuário em navegar no site e campos estão perfeitamentes validados.
 
 ![Aqui aparece a foto do projeto](src/pictures/crud.PNG)
 
