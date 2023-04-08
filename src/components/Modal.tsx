@@ -8,24 +8,17 @@ import {
   Textarea,
 } from "../styles/GlobalStyles";
 import { handleChangeProps, userInformationProps } from "./Home";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { validateField } from "../App";
 
 interface ModalProps {
   admin: {
     id: number;
     option: "delete" | "edit";
   };
-  editForm: {
-    title: string;
-    content: string;
-  };
+
   userInformation: userInformationProps[];
-  setEditForm: React.Dispatch<
-    React.SetStateAction<{
-      title: string;
-      content: string;
-    }>
-  >;
+
   setModal: React.Dispatch<React.SetStateAction<boolean>>;
   setUserInformation: React.Dispatch<
     React.SetStateAction<userInformationProps[]>
@@ -43,9 +36,9 @@ const Modal = ({
   setUserInformation,
   userInformation,
   admin,
-  editForm,
-  setEditForm,
 }: ModalProps) => {
+  const [editForm, setEditForm] = useState({ title: "", content: "" });
+
   const funDelete: FunDeleteAndCanlcel = () => {
     setUserInformation((userInformation) =>
       userInformation.filter((user) => user.id !== admin.id)
@@ -53,6 +46,9 @@ const Modal = ({
     setModal(false);
     window.document.body.classList.remove("opacity");
   };
+
+  const validateTitleField = validateField(editForm.title);
+  const validateContentField = validateField(editForm.content);
 
   useEffect(() => {
     const newUserInformation = userInformation.filter(
@@ -155,6 +151,9 @@ const Modal = ({
               color="#fff"
               type="submit"
               border="2px solid #47B960"
+              disabled={
+                (validateTitleField && true) || (validateContentField && true)
+              }
             >
               Save
             </Button>

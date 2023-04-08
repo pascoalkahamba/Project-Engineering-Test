@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle, css } from "styled-components";
 
 interface CssProps {
   backgroundColor: React.CSSProperties["backgroundColor"];
@@ -85,6 +85,16 @@ export const Button = styled.button<CssProps>`
   border-radius: 0.5rem;
   border: ${({ border }) => border};
   align-self: end;
+
+  ${({ backgroundColor }) =>
+    backgroundColor === "#47B960" &&
+    css`
+      &:disabled {
+        background-color: #ddd;
+        border: 2px solid #ddd;
+        pointer-events: none;
+      }
+    `}
 
   &:disabled {
     background-color: #ddd;

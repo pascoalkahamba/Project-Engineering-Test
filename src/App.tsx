@@ -15,6 +15,14 @@ export interface FormProps {
 
 type handleChangeProps = React.ChangeEventHandler<HTMLInputElement> | undefined;
 
+export function validateField(nameField: string) {
+  return (
+    (nameField === "" && "O campo nome não pode estar vazio.") ||
+    (!Number.isNaN(+nameField) &&
+      "O valor do campo nome não pode ser um numero.")
+  );
+}
+
 const App = () => {
   const [nextPage, setNextPage] = useState(false);
   const [form, setForm] = useState<FormProps>({
@@ -26,6 +34,8 @@ const App = () => {
   const handleChange: handleChangeProps = ({ target }) => {
     setForm({ ...form, [target.id]: target.value });
   };
+
+  const validateUsername = validateField(form.firstField);
 
   return (
     <div className="App">
@@ -48,7 +58,7 @@ const App = () => {
             backgroundColor="#7695ec"
             color="#fff"
             border="none"
-            disabled={form.firstField === "" && true}
+            disabled={validateUsername && true}
             onClick={() => setNextPage(true)}
           >
             ENTER

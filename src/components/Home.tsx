@@ -7,7 +7,7 @@ import {
   Textarea,
   Button,
 } from "../styles/GlobalStyles";
-import { FormProps } from "../App";
+import { FormProps, validateField } from "../App";
 import UserContent from "./UserContent";
 import Modal from "./Modal";
 
@@ -43,11 +43,13 @@ const Home = ({ form, setForm }: homeProps) => {
   >([]);
   const [modal, setModal] = useState(false);
   const [admin, setAdmin] = useState<AdminProps>({ id: 0, option: "delete" });
-  const [editForm, setEditForm] = useState({ title: "", content: "" });
 
   const handleChange: handleChangeProps = ({ target }) => {
     setForm({ ...form, [target.id]: target.value });
   };
+
+  const validateTitleField = validateField(form.titleField);
+  const validateContentField = validateField(form.contentField);
 
   const funAddInformation: funAddInformationProps = (event) => {
     event.preventDefault();
@@ -99,7 +101,7 @@ const Home = ({ form, setForm }: homeProps) => {
             border="none"
             type="submit"
             disabled={
-              (form.titleField === "" || form.contentField === "") && true
+              (validateTitleField && true) || (validateContentField && true)
             }
           >
             Create
@@ -122,9 +124,7 @@ const Home = ({ form, setForm }: homeProps) => {
       {modal && (
         <Modal
           setModal={setModal}
-          setEditForm={setEditForm}
           userInformation={userInformation}
-          editForm={editForm}
           setUserInformation={setUserInformation}
           admin={admin}
         />
