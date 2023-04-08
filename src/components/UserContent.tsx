@@ -40,10 +40,12 @@ const UserContent = ({
     <Content>
       <Title>
         {title}
-        <Icons>
-          <AiOutlineDelete className="icon" onClick={funDeleteInformation} />
-          <AiOutlineEdit className="icon" onClick={funEditInformation} />
-        </Icons>
+        {username === "Pascoal Kahamba" && (
+          <Icons>
+            <AiOutlineDelete className="icon" onClick={funDeleteInformation} />
+            <AiOutlineEdit className="icon" onClick={funEditInformation} />
+          </Icons>
+        )}
       </Title>
 
       <div className="form">
