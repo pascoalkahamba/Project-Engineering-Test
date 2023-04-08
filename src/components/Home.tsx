@@ -85,6 +85,9 @@ const Home = ({ form, setForm }: homeProps) => {
             />
           </div>
           <Button
+            backgroundColor="#7695ec"
+            color="#fff"
+            border="none"
             type="submit"
             disabled={
               (form.titleField === "" || form.contentField === "") && true

@@ -45,6 +45,9 @@ const App = () => {
             />
           </div>
           <Button
+            backgroundColor="#7695ec"
+            color="#fff"
+            border="none"
             disabled={form.firstField === "" && true}
             onClick={() => setNextPage(true)}
           >

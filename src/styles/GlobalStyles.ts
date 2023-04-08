@@ -1,5 +1,11 @@
 import styled, { createGlobalStyle } from "styled-components";
 
+interface CssProps {
+  backgroundColor: React.CSSProperties["backgroundColor"];
+  color: React.CSSProperties["color"];
+  border: React.CSSProperties["border"];
+}
+
 export const GlobalStyle = createGlobalStyle`
   * {
   margin: 0;
@@ -7,7 +13,14 @@ export const GlobalStyle = createGlobalStyle`
   box-sizing: border-box;
 }
 
+.opacity{
+   background-color: #777777cc;
+   /* pointer-events: none; */
+ 
+}
+
 body {
+ 
   font-family: 'Work Sans', sans-serif;
   font-size: 1.1rem;
   color:#000;
@@ -54,14 +67,14 @@ export const UserNameField = styled.div`
   gap: 1rem;
 `;
 
-export const Button = styled.button`
-  background-color: #7695ec;
-  color: #fff;
+export const Button = styled.button<CssProps>`
+  background-color: ${({ backgroundColor }) => backgroundColor};
+  color: ${({ color }) => color};
   cursor: pointer;
   width: 7rem;
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
-  border: none;
+  border: ${({ border }) => border};
   align-self: end;
 
   &:disabled {
@@ -83,7 +96,6 @@ export const Section = styled.section`
   width: 46rem;
   margin-top: 3rem;
   background-color: #fff;
-  transform: translateY(-300px);
 `;
 
 export const Header = styled.header`
@@ -163,4 +175,27 @@ export const Icons = styled.div`
     cursor: pointer;
     font-size: 1.5rem;
   }
+`;
+
+export const ModalDelete = styled(UserNameField)`
+  background-color: #aaa;
+  padding: 1.2rem;
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    align-self: end;
+  }
+`;
+
+export const ModalEdit = styled.div`
+  background-color: #ffff;
+  width: 30rem;
+  margin-top: 8rem;
+  border-radius: 1rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 `;

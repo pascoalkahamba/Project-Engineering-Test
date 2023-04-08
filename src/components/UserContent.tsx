@@ -1,6 +1,8 @@
 import { Content, Title, Icons, SubTitle } from "../styles/GlobalStyles";
+import { useState } from "react";
 import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
 import { userInformationProps } from "./Home";
+import Modal from "./Modal";
 
 interface UserContentProps {
   title: string;
@@ -21,12 +23,16 @@ const UserContent = ({
   username,
   setUserInformation,
 }: UserContentProps) => {
-  function funDeleteInformation(idNumber: number) {
-    setUserInformation((userInformation) =>
-      userInformation.filter((user) => user.id !== idNumber)
-    );
-  }
+  const [modal, setModal] = useState(false);
 
+  function funDeleteInformation(idNumber: number) {
+    // setUserInformation((userInformation) =>
+    //   userInformation.filter((user) => user.id !== idNumber)
+    // );
+    setModal(true);
+    window.document.body.classList.add("opacity");
+  }
+  console.log(modal);
   return (
     <Content>
       <Title>
@@ -47,6 +53,7 @@ const UserContent = ({
         </SubTitle>
         <p>{content}</p>
       </div>
+      {modal && <Modal setModal={setModal} />}
     </Content>
   );
 };
