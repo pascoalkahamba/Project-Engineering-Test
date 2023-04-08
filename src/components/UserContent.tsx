@@ -8,21 +8,11 @@ import { AdminProps, userInformationProps } from "./Home";
 interface UserContentProps {
   title: string;
   id: number;
-  admin: AdminProps;
   username: string;
   minutes: number;
   content: string;
   setModal: React.Dispatch<React.SetStateAction<boolean>>;
   setAdmin: React.Dispatch<React.SetStateAction<AdminProps>>;
-  setUserInformation: React.Dispatch<
-    React.SetStateAction<userInformationProps[]>
-  >;
-  setEditForm: React.Dispatch<
-    React.SetStateAction<{
-      title: string;
-      content: string;
-    }>
-  >;
 }
 
 const UserContent = ({
@@ -30,12 +20,9 @@ const UserContent = ({
   minutes,
   title,
   id,
-  admin,
   username,
   setModal,
   setAdmin,
-  setEditForm,
-  setUserInformation,
 }: UserContentProps) => {
   const funDeleteInformation = () => {
     setAdmin({ id: id, option: "delete" });

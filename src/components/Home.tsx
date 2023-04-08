@@ -67,8 +67,6 @@ const Home = ({ form, setForm }: homeProps) => {
 
   console.log(userInformation);
 
-  const sameUserInformation = [...userInformation];
-
   return (
     <Section className="animeLeft">
       <Header>CodeLeap Network</Header>
@@ -113,11 +111,8 @@ const Home = ({ form, setForm }: homeProps) => {
             key={id}
             id={id}
             setModal={setModal}
-            setUserInformation={setUserInformation}
-            setEditForm={setEditForm}
             username={username}
             title={title}
-            admin={admin}
             minutes={minutes}
             content={content}
             setAdmin={setAdmin}

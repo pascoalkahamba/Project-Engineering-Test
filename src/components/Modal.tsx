@@ -72,6 +72,21 @@ const Modal = ({
 
   const funEdit: FunEditProps = (event) => {
     event.preventDefault();
+    const editedData = userInformation.map((user) => {
+      if (user.id === admin.id)
+        return {
+          title: editForm.title,
+          id: user.id,
+          content: editForm.content,
+          username: user.username,
+          minutes: user.minutes,
+        };
+      else return user;
+    });
+
+    setUserInformation(editedData);
+    setModal(false);
+    window.document.body.classList.remove("opacity");
   };
 
   const funCancel: FunDeleteAndCanlcel = () => {
