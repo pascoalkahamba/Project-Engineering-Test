@@ -16,9 +16,7 @@ interface ModalProps {
     id: number;
     option: "delete" | "edit";
   };
-
   userInformation: userInformationProps[];
-
   setModal: React.Dispatch<React.SetStateAction<boolean>>;
   setUserInformation: React.Dispatch<
     React.SetStateAction<userInformationProps[]>
@@ -26,10 +24,6 @@ interface ModalProps {
 }
 
 type FunEditProps = React.FormEventHandler<HTMLFormElement> | undefined;
-
-type FunDeleteAndCanlcel =
-  | React.MouseEventHandler<HTMLButtonElement>
-  | undefined;
 
 const Modal = ({
   setModal,
@@ -39,7 +33,7 @@ const Modal = ({
 }: ModalProps) => {
   const [editForm, setEditForm] = useState({ title: "", content: "" });
 
-  const funDelete: FunDeleteAndCanlcel = () => {
+  const funDelete = () => {
     setUserInformation((userInformation) =>
       userInformation.filter((user) => user.id !== admin.id)
     );
@@ -85,7 +79,7 @@ const Modal = ({
     window.document.body.classList.remove("opacity");
   };
 
-  const funCancel: FunDeleteAndCanlcel = () => {
+  const funCancel = () => {
     setModal(false);
     window.document.body.classList.remove("opacity");
   };

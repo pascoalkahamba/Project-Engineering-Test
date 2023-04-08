@@ -67,8 +67,6 @@ const Home = ({ form, setForm }: homeProps) => {
     setForm({ firstField: form.firstField, contentField: "", titleField: "" });
   };
 
-  console.log(userInformation);
-
   return (
     <Section className="animeLeft">
       <Header>CodeLeap Network</Header>

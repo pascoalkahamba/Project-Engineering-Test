@@ -50,7 +50,7 @@ const UserContent = ({
           <p className="name">@{username}</p>
           <p className="minutes">{minutes} minutes ago</p>
         </SubTitle>
-        <p>{content}</p>
+        <div>{content}</div>
       </div>
     </Content>
   );

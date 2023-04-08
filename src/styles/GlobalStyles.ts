@@ -1,5 +1,4 @@
 import styled, { createGlobalStyle, css } from "styled-components";
-
 interface CssProps {
   backgroundColor: React.CSSProperties["backgroundColor"];
   color: React.CSSProperties["color"];
@@ -12,15 +11,13 @@ export const GlobalStyle = createGlobalStyle`
   padding: 0;
   box-sizing: border-box;
 }
-
+ 
 .opacity{
    background-color: #777777cc;
 }
 
  
-
 body {
- 
   font-family: 'Work Sans', sans-serif;
   font-size: 1.1rem;
   color:#000;
@@ -67,7 +64,6 @@ body {
 export const UserNameField = styled.div`
   background-color: #ffff;
   width: 30rem;
-
   margin-top: 8rem;
   border-radius: 1rem;
   padding: 1rem;
@@ -199,12 +195,10 @@ export const Icons = styled.div`
 export const ModalDelete = styled(UserNameField)`
   background-color: #fff;
   position: fixed !important;
-  z-index: 1000;
   padding: 1.2rem;
   p {
     font-weight: bold;
   }
-
   transform: translateY(-20px);
   animation: animeRight 0.3s forwards;
 
@@ -221,7 +215,8 @@ export const ModalEdit = styled(Form)`
   .title {
     font-weight: bold;
   }
-
+  z-index: 9999999;
+  position: fixed !important;
   transform: translateY(-20px);
   animation: animeRight 0.3s forwards;
 
@@ -234,7 +229,8 @@ export const ModalEdit = styled(Form)`
 `;
 
 export const ModalSection = styled.section`
-  position: absolute;
+  position: fixed !important;
+  z-index: 10000;
   display: flex;
   justify-content: center;
   align-items: center;
