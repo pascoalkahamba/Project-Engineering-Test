@@ -32,12 +32,17 @@ type funAddInformationProps =
   | React.FormEventHandler<HTMLFormElement>
   | undefined;
 
+export interface AdminProps {
+  id: number;
+  option: "delete" | "edit";
+}
+
 const Home = ({ form, setForm }: homeProps) => {
   const [userInformation, setUserInformation] = useState<
     userInformationProps[]
   >([]);
   const [modal, setModal] = useState(false);
-  const [id, setId] = useState(0);
+  const [admin, setAdmin] = useState<AdminProps>({ id: 0, option: "delete" });
   const handleChange: handleChangeProps = ({ target }) => {
     setForm({ ...form, [target.id]: target.value });
   };
@@ -108,7 +113,7 @@ const Home = ({ form, setForm }: homeProps) => {
             title={title}
             minutes={minutes}
             content={content}
-            setId={setId}
+            setAdmin={setAdmin}
           />
         ))}
       </div>
@@ -116,7 +121,7 @@ const Home = ({ form, setForm }: homeProps) => {
         <Modal
           setModal={setModal}
           setUserInformation={setUserInformation}
-          id={id}
+          admin={admin}
         />
       )}
     </Section>

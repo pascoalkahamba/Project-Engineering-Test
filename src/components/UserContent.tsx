@@ -3,6 +3,7 @@ import { useState } from "react";
 import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
 
 import Modal from "./Modal";
+import { AdminProps } from "./Home";
 
 interface UserContentProps {
   title: string;
@@ -11,7 +12,7 @@ interface UserContentProps {
   minutes: number;
   content: string;
   setModal: React.Dispatch<React.SetStateAction<boolean>>;
-  setId: React.Dispatch<React.SetStateAction<number>>;
+  setAdmin: React.Dispatch<React.SetStateAction<AdminProps>>;
 }
 
 const UserContent = ({
@@ -21,10 +22,16 @@ const UserContent = ({
   id,
   username,
   setModal,
-  setId,
+  setAdmin,
 }: UserContentProps) => {
   const funDeleteInformation = () => {
-    setId(id);
+    setAdmin({ id: id, option: "delete" });
+    setModal(true);
+    window.document.body.classList.add("opacity");
+  };
+
+  const funEditInformation = () => {
+    setAdmin({ id: id, option: "edit" });
     setModal(true);
     window.document.body.classList.add("opacity");
   };
@@ -35,7 +42,7 @@ const UserContent = ({
         {title}
         <Icons>
           <AiOutlineDelete className="icon" onClick={funDeleteInformation} />
-          <AiOutlineEdit className="icon" />
+          <AiOutlineEdit className="icon" onClick={funEditInformation} />
         </Icons>
       </Title>
 

@@ -43,6 +43,14 @@ body {
     padding: 1rem;
   }
 
+    .buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    align-self: end;
+  }
+
   .animeLeft {
   opacity: 0;
   transform: translateX(-20px);
@@ -183,24 +191,16 @@ export const ModalDelete = styled(UserNameField)`
   position: fixed !important;
   z-index: 1000;
   padding: 1.2rem;
-  .buttons {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
-    align-self: end;
+  p {
+    font-weight: bold;
   }
 `;
 
-export const ModalEdit = styled.div`
-  background-color: #ffff;
-  width: 30rem;
-  margin-top: 8rem;
-  border-radius: 1rem;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+export const ModalEdit = styled(Form)`
+  background-color: #fff;
+  .title {
+    font-weight: bold;
+  }
 `;
 
 export const ModalSection = styled.section`
