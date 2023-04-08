@@ -24,7 +24,7 @@ export interface userInformationProps {
   id: number;
 }
 
-type handleChangeProps =
+export type handleChangeProps =
   | React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>
   | undefined;
 
@@ -43,6 +43,8 @@ const Home = ({ form, setForm }: homeProps) => {
   >([]);
   const [modal, setModal] = useState(false);
   const [admin, setAdmin] = useState<AdminProps>({ id: 0, option: "delete" });
+  const [editForm, setEditForm] = useState({ title: "", content: "" });
+
   const handleChange: handleChangeProps = ({ target }) => {
     setForm({ ...form, [target.id]: target.value });
   };
@@ -64,6 +66,8 @@ const Home = ({ form, setForm }: homeProps) => {
   };
 
   console.log(userInformation);
+
+  const sameUserInformation = [...userInformation];
 
   return (
     <Section className="animeLeft">
@@ -109,8 +113,11 @@ const Home = ({ form, setForm }: homeProps) => {
             key={id}
             id={id}
             setModal={setModal}
+            setUserInformation={setUserInformation}
+            setEditForm={setEditForm}
             username={username}
             title={title}
+            admin={admin}
             minutes={minutes}
             content={content}
             setAdmin={setAdmin}
@@ -120,6 +127,9 @@ const Home = ({ form, setForm }: homeProps) => {
       {modal && (
         <Modal
           setModal={setModal}
+          setEditForm={setEditForm}
+          userInformation={userInformation}
+          editForm={editForm}
           setUserInformation={setUserInformation}
           admin={admin}
         />
