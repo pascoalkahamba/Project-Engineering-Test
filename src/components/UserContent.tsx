@@ -10,6 +10,7 @@ interface UserContentProps {
   minutes: number;
   id: number;
   content: string;
+  setModal: React.Dispatch<React.SetStateAction<boolean>>;
   setUserInformation: React.Dispatch<
     React.SetStateAction<userInformationProps[]>
   >;
@@ -22,17 +23,16 @@ const UserContent = ({
   title,
   username,
   setUserInformation,
+  setModal,
 }: UserContentProps) => {
-  const [modal, setModal] = useState(false);
-
-  function funDeleteInformation(idNumber: number) {
+  const funDeleteInformation = (idNumber: number) => {
     // setUserInformation((userInformation) =>
     //   userInformation.filter((user) => user.id !== idNumber)
     // );
     setModal(true);
     window.document.body.classList.add("opacity");
-  }
-  console.log(modal);
+  };
+
   return (
     <Content>
       <Title>
@@ -53,7 +53,6 @@ const UserContent = ({
         </SubTitle>
         <p>{content}</p>
       </div>
-      {modal && <Modal setModal={setModal} />}
     </Content>
   );
 };

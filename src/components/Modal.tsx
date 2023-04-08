@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, ModalDelete } from "../styles/GlobalStyles";
+import { Button, ModalDelete, ModalSection } from "../styles/GlobalStyles";
 
 interface ModalProps {
   setModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -19,8 +19,9 @@ const Modal = ({ setModal }: ModalProps) => {
     setModal(false);
     window.document.body.classList.remove("opacity");
   };
+
   return (
-    <div>
+    <ModalSection>
       <ModalDelete>
         <p>Are you sure you want to delete this item?</p>
         <div className="buttons">
@@ -42,7 +43,7 @@ const Modal = ({ setModal }: ModalProps) => {
           </Button>
         </div>
       </ModalDelete>
-    </div>
+    </ModalSection>
   );
 };
 

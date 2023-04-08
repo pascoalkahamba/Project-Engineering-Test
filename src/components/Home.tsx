@@ -9,6 +9,7 @@ import {
 } from "../styles/GlobalStyles";
 import { FormProps } from "../App";
 import UserContent from "./UserContent";
+import Modal from "./Modal";
 
 interface homeProps {
   form: FormProps;
@@ -35,7 +36,7 @@ const Home = ({ form, setForm }: homeProps) => {
   const [userInformation, setUserInformation] = useState<
     userInformationProps[]
   >([]);
-
+  const [modal, setModal] = useState(false);
   const handleChange: handleChangeProps = ({ target }) => {
     setForm({ ...form, [target.id]: target.value });
   };
@@ -100,6 +101,7 @@ const Home = ({ form, setForm }: homeProps) => {
         {userInformation.map(({ content, id, title, minutes, username }) => (
           <UserContent
             key={id}
+            setModal={setModal}
             setUserInformation={setUserInformation}
             username={username}
             title={title}
@@ -109,6 +111,7 @@ const Home = ({ form, setForm }: homeProps) => {
           />
         ))}
       </div>
+      {modal && <Modal setModal={setModal} />}
     </Section>
   );
 };

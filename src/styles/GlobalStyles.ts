@@ -15,9 +15,9 @@ export const GlobalStyle = createGlobalStyle`
 
 .opacity{
    background-color: #777777cc;
-   /* pointer-events: none; */
- 
 }
+
+ 
 
 body {
  
@@ -59,6 +59,7 @@ body {
 export const UserNameField = styled.div`
   background-color: #ffff;
   width: 30rem;
+
   margin-top: 8rem;
   border-radius: 1rem;
   padding: 1rem;
@@ -178,7 +179,9 @@ export const Icons = styled.div`
 `;
 
 export const ModalDelete = styled(UserNameField)`
-  background-color: #aaa;
+  background-color: #fff;
+  position: fixed !important;
+  z-index: 1000;
   padding: 1.2rem;
   .buttons {
     display: flex;
@@ -198,4 +201,16 @@ export const ModalEdit = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+`;
+
+export const ModalSection = styled.section`
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  background-color: #777777cc;
 `;
