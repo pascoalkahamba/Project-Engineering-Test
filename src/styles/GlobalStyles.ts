@@ -204,12 +204,32 @@ export const ModalDelete = styled(UserNameField)`
   p {
     font-weight: bold;
   }
+
+  transform: translateY(-20px);
+  animation: animeRight 0.3s forwards;
+
+  @keyframes animeRight {
+    to {
+      opacity: initial;
+      transform: initial;
+    }
+  }
 `;
 
 export const ModalEdit = styled(Form)`
   background-color: #fff;
   .title {
     font-weight: bold;
+  }
+
+  transform: translateY(-20px);
+  animation: animeRight 0.3s forwards;
+
+  @keyframes animeRight {
+    to {
+      opacity: initial;
+      transform: initial;
+    }
   }
 `;
 
