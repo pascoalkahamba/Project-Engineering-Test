@@ -40,7 +40,7 @@ const App = () => {
             <Input
               type="text"
               id="firstField"
-              placeholder="john doe"
+              placeholder="my username is Pascoal Kahamba"
               onChange={handleChange}
             />
           </div>

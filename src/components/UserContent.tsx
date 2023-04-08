@@ -1,9 +1,6 @@
 import { Content, Title, Icons, SubTitle } from "../styles/GlobalStyles";
-import { useState } from "react";
 import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
-
-import Modal from "./Modal";
-import { AdminProps, userInformationProps } from "./Home";
+import { AdminProps } from "./Home";
 
 interface UserContentProps {
   title: string;
@@ -51,7 +48,7 @@ const UserContent = ({
       <div className="form">
         <SubTitle>
           <p className="name">@{username}</p>
-          <p className="minutes"> {minutes} minutes ago</p>
+          <p className="minutes">{minutes} minutes ago</p>
         </SubTitle>
         <p>{content}</p>
       </div>

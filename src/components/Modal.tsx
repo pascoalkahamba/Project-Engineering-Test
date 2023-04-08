@@ -8,7 +8,7 @@ import {
   Textarea,
 } from "../styles/GlobalStyles";
 import { handleChangeProps, userInformationProps } from "./Home";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 
 interface ModalProps {
   admin: {
