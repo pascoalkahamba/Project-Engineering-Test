@@ -195,6 +195,7 @@ export const Icons = styled.div`
 export const ModalDelete = styled(UserNameField)`
   background-color: #fff;
   position: fixed !important;
+  z-index: 10000;
   padding: 1.2rem;
   p {
     font-weight: bold;
