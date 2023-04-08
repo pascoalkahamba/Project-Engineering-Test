@@ -1,16 +1,24 @@
 import React from "react";
 import { Button, ModalDelete, ModalSection } from "../styles/GlobalStyles";
+import { userInformationProps } from "./Home";
 
 interface ModalProps {
+  id: number;
   setModal: React.Dispatch<React.SetStateAction<boolean>>;
+  setUserInformation: React.Dispatch<
+    React.SetStateAction<userInformationProps[]>
+  >;
 }
 
 type FunDeleteAndCanlcel =
   | React.MouseEventHandler<HTMLButtonElement>
   | undefined;
 
-const Modal = ({ setModal }: ModalProps) => {
+const Modal = ({ setModal, setUserInformation, id }: ModalProps) => {
   const funDelete: FunDeleteAndCanlcel = () => {
+    setUserInformation((userInformation) =>
+      userInformation.filter((user) => user.id !== id)
+    );
     setModal(false);
     window.document.body.classList.remove("opacity");
   };

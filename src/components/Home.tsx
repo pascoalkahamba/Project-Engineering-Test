@@ -37,6 +37,7 @@ const Home = ({ form, setForm }: homeProps) => {
     userInformationProps[]
   >([]);
   const [modal, setModal] = useState(false);
+  const [id, setId] = useState(0);
   const handleChange: handleChangeProps = ({ target }) => {
     setForm({ ...form, [target.id]: target.value });
   };
@@ -101,17 +102,23 @@ const Home = ({ form, setForm }: homeProps) => {
         {userInformation.map(({ content, id, title, minutes, username }) => (
           <UserContent
             key={id}
+            id={id}
             setModal={setModal}
-            setUserInformation={setUserInformation}
             username={username}
             title={title}
             minutes={minutes}
             content={content}
-            id={id}
+            setId={setId}
           />
         ))}
       </div>
-      {modal && <Modal setModal={setModal} />}
+      {modal && (
+        <Modal
+          setModal={setModal}
+          setUserInformation={setUserInformation}
+          id={id}
+        />
+      )}
     </Section>
   );
 };

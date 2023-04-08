@@ -1,34 +1,30 @@
 import { Content, Title, Icons, SubTitle } from "../styles/GlobalStyles";
 import { useState } from "react";
 import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
-import { userInformationProps } from "./Home";
+
 import Modal from "./Modal";
 
 interface UserContentProps {
   title: string;
+  id: number;
   username: string;
   minutes: number;
-  id: number;
   content: string;
   setModal: React.Dispatch<React.SetStateAction<boolean>>;
-  setUserInformation: React.Dispatch<
-    React.SetStateAction<userInformationProps[]>
-  >;
+  setId: React.Dispatch<React.SetStateAction<number>>;
 }
 
 const UserContent = ({
   content,
   minutes,
-  id,
   title,
+  id,
   username,
-  setUserInformation,
   setModal,
+  setId,
 }: UserContentProps) => {
-  const funDeleteInformation = (idNumber: number) => {
-    // setUserInformation((userInformation) =>
-    //   userInformation.filter((user) => user.id !== idNumber)
-    // );
+  const funDeleteInformation = () => {
+    setId(id);
     setModal(true);
     window.document.body.classList.add("opacity");
   };
@@ -38,10 +34,7 @@ const UserContent = ({
       <Title>
         {title}
         <Icons>
-          <AiOutlineDelete
-            className="icon"
-            onClick={() => funDeleteInformation(id)}
-          />
+          <AiOutlineDelete className="icon" onClick={funDeleteInformation} />
           <AiOutlineEdit className="icon" />
         </Icons>
       </Title>
