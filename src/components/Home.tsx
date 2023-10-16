@@ -51,7 +51,7 @@ const Home = ({ form, setForm }: homeProps) => {
   const validateTitleField = validateField(form.titleField);
   const validateContentField = validateField(form.contentField);
 
-  const funAddInformation: funAddInformationProps = (event) => {
+  const addInformation: funAddInformationProps = (event) => {
     event.preventDefault();
     setUserInformation([
       ...userInformation,
@@ -71,7 +71,7 @@ const Home = ({ form, setForm }: homeProps) => {
     <Section className="animeLeft">
       <Header>CodeLeap Network</Header>
       <div className="form">
-        <Form onSubmit={funAddInformation}>
+        <Form onSubmit={addInformation}>
           <h3>What’s on your mind?</h3>
           <div className="username">
             <p>Title</p>
