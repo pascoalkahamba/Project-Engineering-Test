@@ -7,33 +7,39 @@ import {
   Input,
   Textarea,
 } from "../styles/GlobalStyles";
-import { handleChangeProps, userInformationProps } from "./Home";
+import { handleChangeProps, UserInformationProps } from "./Home";
 import { useEffect, useState } from "react";
 import { validateField } from "../App";
+import { ActionProps } from "./ManageInfoReducer";
 
 interface ModalProps {
   admin: {
-    id: number;
+    id?: number;
     option: "delete" | "edit";
   };
-  userInformation: userInformationProps[];
+  userInformation: UserInformationProps[];
   setModal: React.Dispatch<React.SetStateAction<boolean>>;
   dispatch: React.Dispatch<ActionProps>;
 }
+type EditFormProps = Pick<UserInformationProps, "title" | "content">;
 
 type FunEditProps = React.FormEventHandler<HTMLFormElement> | undefined;
 
 const Modal = ({ setModal, dispatch, userInformation, admin }: ModalProps) => {
-  const [editForm, setEditForm] = useState({ title: "", content: "" });
+  const [editForm, setEditForm] = useState<EditFormProps>({
+    title: "",
+    content: "",
+  });
+  const { title, content } = editForm;
 
-  const funDelete = () => {
-    dispatch({ type: "delete" });
+  function funDelete() {
+    dispatch({ type: "delete", id: admin.id });
     setModal(false);
     window.document.body.classList.remove("opacity");
-  };
+  }
 
-  const validateTitleField = validateField(editForm.title);
-  const validateContentField = validateField(editForm.content);
+  const validateTitleField = validateField(title as string);
+  const validateContentField = validateField(content as string);
 
   useEffect(() => {
     const newUserInformation = userInformation.filter(
@@ -51,29 +57,18 @@ const Modal = ({ setModal, dispatch, userInformation, admin }: ModalProps) => {
     setEditForm({ ...editForm, [target.id]: target.value });
   };
 
-  const funEdit: FunEditProps = (event) => {
+  const edit: FunEditProps = (event) => {
     event.preventDefault();
-    const editedData = userInformation.map((user) => {
-      if (user.id === admin.id)
-        return {
-          title: editForm.title,
-          id: user.id,
-          content: editForm.content,
-          username: user.username,
-          minutes: user.minutes,
-        };
-      else return user;
-    });
+    dispatch({ type: "change", title, content, id: admin.id });
 
-    dispatch(editedData);
     setModal(false);
     window.document.body.classList.remove("opacity");
   };
 
-  const funCancel = () => {
+  function cancel() {
     setModal(false);
     window.document.body.classList.remove("opacity");
-  };
+  }
 
   return (
     <ModalSection>
@@ -84,7 +79,7 @@ const Modal = ({ setModal, dispatch, userInformation, admin }: ModalProps) => {
             <Button
               backgroundColor="#fff"
               color="#000"
-              onClick={funCancel}
+              onClick={cancel}
               border="2px solid #DDDD"
             >
               Cancel
@@ -100,7 +95,7 @@ const Modal = ({ setModal, dispatch, userInformation, admin }: ModalProps) => {
           </div>
         </ModalDelete>
       ) : (
-        <ModalEdit onSubmit={funEdit}>
+        <ModalEdit onSubmit={edit}>
           <p className="title">Edit item?</p>
           <div className="username">
             <p>Title</p>
@@ -126,7 +121,7 @@ const Modal = ({ setModal, dispatch, userInformation, admin }: ModalProps) => {
             <Button
               backgroundColor="#fff"
               color="#000"
-              onClick={funCancel}
+              onClick={cancel}
               border="2px solid #DDDD"
             >
               Cancel

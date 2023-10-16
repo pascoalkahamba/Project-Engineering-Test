@@ -3,11 +3,11 @@ import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
 import { AdminProps } from "./Home";
 
 interface UserContentProps {
-  title: string;
-  id: number;
-  username: string;
-  minutes: number;
-  content: string;
+  title?: string;
+  id?: number;
+  username?: string;
+  minutes?: number;
+  content?: string;
   setModal: React.Dispatch<React.SetStateAction<boolean>>;
   setAdmin: React.Dispatch<React.SetStateAction<AdminProps>>;
 }
@@ -37,12 +37,10 @@ const UserContent = ({
     <Content>
       <Title>
         {title}
-        {username === "Pascoal Kahamba" && (
-          <Icons>
-            <AiOutlineDelete className="icon" onClick={funDeleteInformation} />
-            <AiOutlineEdit className="icon" onClick={funEditInformation} />
-          </Icons>
-        )}
+        <Icons>
+          <AiOutlineDelete className="icon" onClick={funDeleteInformation} />
+          <AiOutlineEdit className="icon" onClick={funEditInformation} />
+        </Icons>
       </Title>
 
       <div className="form">

@@ -17,12 +17,12 @@ interface homeProps {
   setForm: React.Dispatch<React.SetStateAction<FormProps>>;
 }
 
-export interface userInformationProps {
-  username: string;
-  minutes: number;
-  title: string;
-  content: string;
-  id: number;
+export interface UserInformationProps {
+  username?: string;
+  minutes?: number;
+  title?: string;
+  content?: string;
+  id?: number;
 }
 
 export type handleChangeProps =
@@ -34,7 +34,7 @@ type funAddInformationProps =
   | undefined;
 
 export interface AdminProps {
-  id: number;
+  id?: number;
   option: "delete" | "edit";
 }
 
@@ -42,26 +42,25 @@ const Home = ({ form, setForm }: homeProps) => {
   const [userInformation, dispatch] = useReducer(manageInfoReducer, []);
   const [modal, setModal] = useState(false);
   const [admin, setAdmin] = useState<AdminProps>({ id: 0, option: "delete" });
+  const { contentField, firstField, titleField } = form;
 
   const handleChange: handleChangeProps = ({ target }) => {
     setForm({ ...form, [target.id]: target.value });
   };
 
-  const validateTitleField = validateField(form.titleField);
-  const validateContentField = validateField(form.contentField);
+  const validateTitleField = validateField(titleField);
+  const validateContentField = validateField(contentField);
 
   const addInformation: funAddInformationProps = (event) => {
     event.preventDefault();
     dispatch({
       type: "add",
-      title: form.titleField,
-      content: form.contentField,
-      username: form.firstField,
-      id: Number(Math.round(Math.random() * 100)),
-      minutes: new Date().getMinutes(),
+      title: titleField,
+      content: contentField,
+      username: firstField,
     });
 
-    setForm({ firstField: form.firstField, contentField: "", titleField: "" });
+    setForm({ firstField: firstField, contentField: "", titleField: "" });
   };
 
   return (
@@ -74,7 +73,7 @@ const Home = ({ form, setForm }: homeProps) => {
             <p>Title</p>
             <Input
               type="text"
-              value={form.titleField}
+              value={titleField}
               onChange={handleChange}
               id="titleField"
               placeholder="Hello World"
@@ -84,7 +83,7 @@ const Home = ({ form, setForm }: homeProps) => {
           <div className="username">
             <p>Content</p>
             <Textarea
-              value={form.contentField}
+              value={contentField}
               onChange={handleChange}
               id="contentField"
               placeholder="Content Here"

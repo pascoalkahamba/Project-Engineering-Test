@@ -50,7 +50,7 @@ const App = () => {
             <Input
               type="text"
               id="firstField"
-              placeholder="my username is Pascoal Kahamba"
+              placeholder="Input your username"
               onChange={handleChange}
             />
           </div>

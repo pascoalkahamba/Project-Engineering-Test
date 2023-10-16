@@ -1,28 +1,29 @@
 import React from "react";
-import { userInformationProps } from "./Home";
+import { UserInformationProps } from "./Home";
 
-export interface ActionProps extends userInformationProps {
+export interface ActionProps extends UserInformationProps {
   type: "add" | "change" | "delete";
 }
 
 export default function manageInfoReducer(
-  state: userInformationProps[],
+  state: UserInformationProps[],
   action: ActionProps
 ) {
   switch (action.type) {
-    case "add":
+    case "add": {
       return [
         ...state,
         {
           title: action.title,
           content: action.content,
           username: action.username,
-          id: action.id,
-          minutes: action.minutes,
+          id: Number(Math.round(Math.random() * 100)),
+          minutes: new Date().getMinutes(),
         },
       ];
+    }
 
-    case "change":
+    case "change": {
       const newState = state.map((user) => {
         if (user.id === action.id)
           return {
@@ -35,10 +36,10 @@ export default function manageInfoReducer(
         else return user;
       });
       return newState;
+    }
 
-    case "delete":
-      state.filter((user) => user.id !== action.id);
-    default:
-      throw new Error("Ação não encontrada! " + action.type);
+    case "delete": {
+      return state.filter((user) => user.id !== action.id);
+    }
   }
 }
