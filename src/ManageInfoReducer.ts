@@ -1,5 +1,4 @@
-import React from "react";
-import { UserInformationProps } from "./Home";
+import { UserInformationProps } from "./components/Home";
 
 export interface ActionProps extends UserInformationProps {
   type: "add" | "change" | "delete";

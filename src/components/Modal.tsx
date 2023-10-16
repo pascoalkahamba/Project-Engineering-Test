@@ -10,7 +10,7 @@ import {
 import { handleChangeProps, UserInformationProps } from "./Home";
 import { useEffect, useState } from "react";
 import { validateField } from "../App";
-import { ActionProps } from "./ManageInfoReducer";
+import { ActionProps } from "../ManageInfoReducer";
 
 interface ModalProps {
   admin: {

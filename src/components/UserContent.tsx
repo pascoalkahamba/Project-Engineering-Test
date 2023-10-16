@@ -1,13 +1,8 @@
 import { Content, Title, Icons, SubTitle } from "../styles/GlobalStyles";
 import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
-import { AdminProps } from "./Home";
+import { AdminProps, UserInformationProps } from "./Home";
 
-interface UserContentProps {
-  title?: string;
-  id?: number;
-  username?: string;
-  minutes?: number;
-  content?: string;
+interface UserContentProps extends UserInformationProps {
   setModal: React.Dispatch<React.SetStateAction<boolean>>;
   setAdmin: React.Dispatch<React.SetStateAction<AdminProps>>;
 }
@@ -21,25 +16,25 @@ const UserContent = ({
   setModal,
   setAdmin,
 }: UserContentProps) => {
-  const funDeleteInformation = () => {
+  function deleteInformation() {
     setAdmin({ id: id, option: "delete" });
     setModal(true);
     window.document.body.classList.add("opacity");
-  };
+  }
 
-  const funEditInformation = () => {
+  function editInformation() {
     setAdmin({ id: id, option: "edit" });
     setModal(true);
     window.document.body.classList.add("opacity");
-  };
+  }
 
   return (
     <Content>
       <Title>
         {title}
         <Icons>
-          <AiOutlineDelete className="icon" onClick={funDeleteInformation} />
-          <AiOutlineEdit className="icon" onClick={funEditInformation} />
+          <AiOutlineDelete className="icon" onClick={deleteInformation} />
+          <AiOutlineEdit className="icon" onClick={editInformation} />
         </Icons>
       </Title>
 

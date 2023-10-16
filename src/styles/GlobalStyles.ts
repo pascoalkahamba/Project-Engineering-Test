@@ -194,8 +194,7 @@ export const Icons = styled.div`
 
 export const ModalDelete = styled(UserNameField)`
   background-color: #fff;
-  position: fixed !important;
-  z-index: 10000;
+
   padding: 1.2rem;
   p {
     font-weight: bold;
@@ -216,8 +215,6 @@ export const ModalEdit = styled(Form)`
   .title {
     font-weight: bold;
   }
-  z-index: 9999999;
-  position: fixed !important;
   transform: translateY(-20px);
   animation: animeRight 0.3s forwards;
 
@@ -231,7 +228,7 @@ export const ModalEdit = styled(Form)`
 
 export const ModalSection = styled.section`
   position: fixed !important;
-  z-index: 10000;
+  z-index: 999999;
   display: flex;
   justify-content: center;
   align-items: center;

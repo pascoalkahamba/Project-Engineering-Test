@@ -10,7 +10,7 @@ import {
 import { FormProps, validateField } from "../App";
 import UserContent from "./UserContent";
 import Modal from "./Modal";
-import manageInfoReducer from "./ManageInfoReducer";
+import manageInfoReducer from "../ManageInfoReducer";
 
 interface homeProps {
   form: FormProps;
