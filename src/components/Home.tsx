@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useReducer, useState } from "react";
 import {
   Form,
   Header,
@@ -10,6 +10,7 @@ import {
 import { FormProps, validateField } from "../App";
 import UserContent from "./UserContent";
 import Modal from "./Modal";
+import manageInfoReducer from "./ManageInfoReducer";
 
 interface homeProps {
   form: FormProps;
@@ -38,9 +39,7 @@ export interface AdminProps {
 }
 
 const Home = ({ form, setForm }: homeProps) => {
-  const [userInformation, setUserInformation] = useState<
-    userInformationProps[]
-  >([]);
+  const [userInformation, dispatch] = useReducer(manageInfoReducer, []);
   const [modal, setModal] = useState(false);
   const [admin, setAdmin] = useState<AdminProps>({ id: 0, option: "delete" });
 
@@ -53,16 +52,14 @@ const Home = ({ form, setForm }: homeProps) => {
 
   const addInformation: funAddInformationProps = (event) => {
     event.preventDefault();
-    setUserInformation([
-      ...userInformation,
-      {
-        title: form.titleField,
-        content: form.contentField,
-        username: form.firstField,
-        id: Number(Math.round(Math.random() * 100)),
-        minutes: new Date().getMinutes(),
-      },
-    ]);
+    dispatch({
+      type: "add",
+      title: form.titleField,
+      content: form.contentField,
+      username: form.firstField,
+      id: Number(Math.round(Math.random() * 100)),
+      minutes: new Date().getMinutes(),
+    });
 
     setForm({ firstField: form.firstField, contentField: "", titleField: "" });
   };
@@ -123,7 +120,7 @@ const Home = ({ form, setForm }: homeProps) => {
         <Modal
           setModal={setModal}
           userInformation={userInformation}
-          setUserInformation={setUserInformation}
+          dispatch={dispatch}
           admin={admin}
         />
       )}

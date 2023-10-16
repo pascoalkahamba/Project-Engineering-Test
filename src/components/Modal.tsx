@@ -18,25 +18,16 @@ interface ModalProps {
   };
   userInformation: userInformationProps[];
   setModal: React.Dispatch<React.SetStateAction<boolean>>;
-  setUserInformation: React.Dispatch<
-    React.SetStateAction<userInformationProps[]>
-  >;
+  dispatch: React.Dispatch<ActionProps>;
 }
 
 type FunEditProps = React.FormEventHandler<HTMLFormElement> | undefined;
 
-const Modal = ({
-  setModal,
-  setUserInformation,
-  userInformation,
-  admin,
-}: ModalProps) => {
+const Modal = ({ setModal, dispatch, userInformation, admin }: ModalProps) => {
   const [editForm, setEditForm] = useState({ title: "", content: "" });
 
   const funDelete = () => {
-    setUserInformation((userInformation) =>
-      userInformation.filter((user) => user.id !== admin.id)
-    );
+    dispatch({ type: "delete" });
     setModal(false);
     window.document.body.classList.remove("opacity");
   };
@@ -74,7 +65,7 @@ const Modal = ({
       else return user;
     });
 
-    setUserInformation(editedData);
+    dispatch(editedData);
     setModal(false);
     window.document.body.classList.remove("opacity");
   };

@@ -1,11 +1,11 @@
 import React from "react";
 import { userInformationProps } from "./Home";
 
-interface ActionProps extends userInformationProps {
+export interface ActionProps extends userInformationProps {
   type: "add" | "change" | "delete";
 }
 
-export default function maniputeInfoReducer(
+export default function manageInfoReducer(
   state: userInformationProps[],
   action: ActionProps
 ) {
@@ -17,8 +17,8 @@ export default function maniputeInfoReducer(
           title: action.title,
           content: action.content,
           username: action.username,
-          id: Number(Math.round(Math.random() * 100)),
-          minutes: new Date().getMinutes(),
+          id: action.id,
+          minutes: action.minutes,
         },
       ];
 
